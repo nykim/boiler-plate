@@ -26,6 +26,11 @@ app.get('/', (req, res) => {
   res.send('Hello World! 안녕하세요!!! ajaja')
 })
 
+app.get('/api/hello', (req, res) => {
+  res.send('안녕하세요!!! 호호호!!!!')
+})
+
+
 app.post('/api/users/register', (req, res) => {
   // get User registration info from the client, then put into DB
   const user = new User(req.body)
@@ -61,7 +66,7 @@ app.post('/api/users/login', (req, res) => {
         // store token (cookie, local storage, etc...)
         res.cookie("x_auth", user.token)
           .status(200)
-          .json({ logicSuccess: true, userId: user._id})
+          .json({ loginSuccess: true, userId: user._id})
       })
     })
   })
